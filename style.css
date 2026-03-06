@@ -39,6 +39,7 @@ div.footer {
     white-space: pre-line;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 div.code {
     font-family: 'Courier New', monospace;
