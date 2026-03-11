@@ -1,32 +1,512 @@
-<html>
-    <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-46PC67S5PN"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alisa Esage Шевченко">
+<title>Alisa Esage</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Share+Tech+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #07080d;
+    --text: rgba(210, 215, 225, 0.88);
+    --text-dim: rgba(160, 165, 180, 0.38);
+    --text-mid: rgba(190, 195, 210, 0.6);
+    --rule: rgba(180, 190, 210, 0.1);
+    --rule-bright: rgba(180, 190, 210, 0.18);
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Grain */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── LAYOUT ── */
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* ── CUBE ── */
+  .cube-container {
+    width: min(580px, 92vw);
+    aspect-ratio: 1;
+    position: relative;
+    margin-top: 0;
+  }
+
+  .cube-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: brightness(1.05) contrast(1.02);
+  }
+
+  /* Floor glow bleeds into page */
+  .cube-container::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 80px;
+    background: radial-gradient(ellipse at center,
+      rgba(160, 185, 230, 0.06) 0%,
+      transparent 70%);
+    filter: blur(24px);
+    pointer-events: none;
+  }
+
+  /* ── TRANSMISSION ── */
+  .transmission {
+    margin-top: 40px;
+    text-align: center;
+    padding: 0 32px;
+  }
+
+  .transmission-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .transmission a {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(15px, 2.2vw, 18px);
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+    border-bottom: 1px solid rgba(180, 190, 210, 0.15);
+    padding-bottom: 1px;
+  }
+
+  .transmission a:hover {
+    color: var(--text);
+    border-bottom-color: rgba(180, 190, 210, 0.4);
+  }
+
+  /* ── NAV ── */
+  nav {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: var(--text-mid);
+  }
+
+  nav .sep {
+    color: var(--rule-bright);
+    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  /* ── RULE ── */
+  .rule-line {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom,
+      transparent,
+      rgba(180, 195, 225, 0.18),
+      transparent);
+    margin: 52px auto;
+  }
+
+  /* ── BRANDS ── */
+  .brands {
+    width: min(520px, 88vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .brand-item {
+    width: 100%;
+    text-align: center;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    display: block;
+    transition: all 0.25s ease;
+  }
+
+  .brand-item:first-child {
+    border-top: 1px solid var(--rule);
+  }
+
+  .brand-item:hover .brand-name {
+    color: rgba(220, 225, 240, 1);
+  }
+
+  .brand-item:hover .brand-desc {
+    color: rgba(170, 175, 195, 0.65);
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(17px, 2.8vw, 21px);
+    color: var(--text);
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+  }
+
+  .brand-desc {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    margin-top: 9px;
+    text-transform: uppercase;
+    line-height: 1.6;
+    transition: color 0.25s ease;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── RULE ── */
+  .rule-line-short {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom,
+      transparent,
+      rgba(180, 195, 225, 0.12),
+      transparent);
+    margin: 48px auto;
+  }
+
+  /* ── SOCIALS ── */
+  .socials {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 32px;
+  }
+
+  .socials a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  .socials a:hover {
+    color: var(--text-mid);
+  }
+
+  /* ── MAILING LIST ── */
+  .access-denied {
+    margin-top: 52px;
+    width: min(360px, 88vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .access-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .access-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .access-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule-bright);
+    padding: 10px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .access-input::placeholder {
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    font-size: 9px;
+  }
+
+  .access-input:focus {
+    border-bottom-color: rgba(180, 195, 225, 0.4);
+  }
+
+  .access-submit {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px solid var(--rule-bright);
+    padding: 10px 32px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .access-submit:hover {
+    border-color: rgba(180, 195, 225, 0.35);
+    color: var(--text-mid);
+  }
+
+  .access-submit:active {
+    color: var(--text);
+  }
+
+  /* Success state */
+  .access-success {
+    display: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 80px;
+    padding-bottom: 48px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(160, 165, 180, 0.22);
+  }
+
+  .footer-copy {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(140, 150, 170, 0.12);
+    text-transform: uppercase;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    nav {
+      gap: 24px;
+    }
+
+    .rule-line {
+      margin: 40px auto;
+    }
+
+    .brand-item {
+      padding: 24px 0;
+    }
+
+    .brand-desc {
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+    .socials {
+      gap: 24px;
+    }
+
+    .access-denied {
+      margin-top: 44px;
+    }
+  }
+
+  /* Touch states */
+  @media (hover: none) {
+    .brand-item:active .brand-name { color: rgba(220, 225, 240, 1); }
+    .brand-item:active .brand-desc { color: rgba(170, 175, 195, 0.65); }
+    nav a:active { color: var(--text-mid); }
+    .socials a:active { color: var(--text-mid); }
+    .access-submit:active {
+      border-color: rgba(180, 195, 225, 0.35);
+      color: var(--text-mid);
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- CUBE -->
+  <div class="cube-container">
+    <img
+      class="cube-img"
+      src="cube.png"
+      alt=""
+    />
+  </div>
+
+  <!-- CURRENT TRANSMISSION -->
+  <div class="transmission">
+    <div class="transmission-label">Recent</div>
+    <a href="https://re.alisa.sh/notes/ai-identity.pdf" target="_blank" rel="noopener">
+      AI Identity and the Megapolitics of the Mind
+    </a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#">Research</a>
+    <span class="sep">·</span>
+    <a href="#">Record</a>
+  </nav>
+
+  <div class="rule-line"></div>
+
+  <!-- BRANDS -->
+  <div class="brands">
+
+    <a href="#" class="brand-item">
+      <div class="brand-name">Reality Model</div>
+      <div class="brand-desc">Private cohorts for post-human operators<br>Subscribe to get notified</div>
+    </a>
+
+    <a href="https://zerodayengineering.com" class="brand-item" target="_blank" rel="noopener">
+      <div class="brand-name">Zero Day Engineering</div>
+      <div class="brand-desc">Exploit research and theoretical models<br> for defense, intelligence, and frontier organizations</div>
+    </a>
+
+  </div>
+
+  <div class="rule-line-short"></div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <a href="https://twitter.com/alisaesage" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://github.com/badd1e" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://youtube.com/@alisaesage" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://instagram.com/alisaesage" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://t.me/alisaesage" target="_blank" rel="noopener">Telegram</a>
+  </div>
+
+  <!-- MAILING LIST — Kit (ConvertKit) via fetch, no form submission, no redirect -->
+  <div class="access-denied">
+    <div class="access-label">Access Denied</div>
+    <div class="access-form" id="access-form">
+      <input
+        class="access-input"
+        type="email"
+        id="access-email"
+        placeholder="your@email.com"
+        autocomplete="email"
+        spellcheck="false"
+        autocapitalize="off"
+        onkeydown="if(event.key==='Enter') handleSubmit()"
+      />
+      <button class="access-submit" onclick="handleSubmit()">Request</button>
+    </div>
+    <div class="access-success" id="success-msg">Received.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Alisa Esage Шевченко</div>
+    <div class="footer-copy">© 2026</div>
+  </footer>
+
+</div>
+
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+async function handleSubmit() {
+  const input = document.getElementById('access-email');
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) {
+    input.focus();
+    return;
+  }
 
-  gtag('config', 'G-46PC67S5PN');
+  // Replace with your Google Apps Script Web App URL after deployment
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzpRvm1zH4agyJXR2P_ugJZJnreFoaQ2HcyHbfh9XY1uI1BckxX9l2BzZerfqOiZtmdMQ/exec';
+
+  try {
+    await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `email=${encodeURIComponent(email)}`,
+      mode: 'no-cors'
+    });
+  } catch(e) {}
+
+  document.getElementById('access-form').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
 </script>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
-        <title>Research Notes by Alisa Esage</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <div class = "index">
-            <img src = "images/little-door.gif" width="300px">
-            <h1>Research Notes</h1>
-            <a href="notes/ai-identity.html">AI Identity and the Megapolitics of the Mind</a><br>
-            <div class="metanote"><font style="background-color: yellow;">Update (2025)</font>: <a target="_blank" href="http://godmodenow.gg">God Mode Now</a></div>
-            <div class="metanote"><font style="background-color: yellow;">Update (2021)</font>: adversarial systems security notes now go to <a href="https://zerodayengineering.com/research/index.html" target="_blank">Zero Day Engineering</a> research blog</div>
-            <a href="notes/Hyper-V-LIS.html">Hyper-V internals and LIS</a>
-            <a href="notes/iBoot-heap-internals.html">iBoot heap internals</a>
-            <a href="notes/iBoot-address-space.html">iBoot address space</a>
-            <a href="notes/about.html">About</a>
-            <a href="https://alisa.sh">□</a>
-        </div>
-    </body>
-
+</body>
 </html>
