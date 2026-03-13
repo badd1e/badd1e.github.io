@@ -465,9 +465,9 @@
     <a href="https://t.me/alisaesage" target="_blank" rel="noopener">Telegram</a>
   </div>
 
-  <!-- MAILING LIST — Kit (ConvertKit) via fetch, no form submission, no redirect -->
+  <!-- MAILING LIST — Kit (ConvertKit) via fetch, no form submission, no redirect 
   <div class="access-denied">
-    <div class="access-label">Maillist: Access Denied</div>
+    <div class="access-label">Access Denied</div>
     <div class="access-form" id="access-form">
       <input
         class="access-input"
@@ -482,7 +482,7 @@
       <button class="access-submit" onclick="handleSubmit()">Request</button>
     </div>
     <div class="access-success" id="success-msg">Success.</div>
-  </div>
+  </div> -->
 
   <!-- FOOTER -->
   <footer>
@@ -492,31 +492,6 @@
 
 </div>
 
-<script>
-async function handleSubmit() {
-  const input = document.getElementById('access-email');
-  const email = input.value.trim();
-  if (!email || !email.includes('@')) {
-    input.focus();
-    return;
-  }
-
-  // Replace with your Google Apps Script Web App URL after deployment
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzpRvm1zH4agyJXR2P_ugJZJnreFoaQ2HcyHbfh9XY1uI1BckxX9l2BzZerfqOiZtmdMQ/exec';
-
-  try {
-    await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `email=${encodeURIComponent(email)}`,
-      mode: 'no-cors'
-    });
-  } catch(e) {}
-
-  document.getElementById('access-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-}
-</script>
 
 </body>
 </html>
