@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alisa Esage Шевченко — Record">
+<title>Record — Alisa Esage</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Share+Tech+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #07080d;
+    --text: rgba(210, 215, 225, 0.88);
+    --text-dim: rgba(160, 165, 180, 0.38);
+    --text-mid: rgba(190, 195, 210, 0.6);
+    --rule: rgba(180, 190, 210, 0.1);
+    --rule-bright: rgba(180, 190, 210, 0.18);
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 80px;
+  }
+
+  .page-header {
+    width: min(640px, 88vw);
+    padding-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .back-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    align-self: flex-start;
+    margin-bottom: 40px;
+  }
+
+  .back-link:hover { color: var(--text-mid); }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 5vw, 38px);
+    letter-spacing: 2px;
+    color: var(--text);
+    text-align: center;
+  }
+
+  .page-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 14px;
+    text-align: center;
+    line-height: 1.8;
+    max-width: 420px;
+  }
+
+  .rule-line {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, rgba(180, 195, 225, 0.18), transparent);
+    margin: 48px auto;
+  }
+
+  .content {
+    width: min(640px, 88vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .category {
+    width: 100%;
+    padding: 40px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .category:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .category-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .year-block {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 28px;
+    margin-bottom: 32px;
+  }
+
+  .year-block:last-child { margin-bottom: 0; }
+
+  .year-marker {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    padding-top: 4px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .year-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .item-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    display: inline;
+    line-height: 1.4;
+  }
+
+  .item-link:hover {
+    color: rgba(225, 230, 245, 1);
+    border-bottom-color: rgba(180, 190, 210, 0.25);
+  }
+
+  .item-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--text);
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+  }
+
+  .item-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .item-note a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 2.4vw, 18px);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    line-height: 1.4;
+  }
+
+  .item-note a:hover {
+    color: rgba(225, 230, 245, 1);
+    border-bottom-color: rgba(180, 190, 210, 0.25);
+  }
+
+  /* Press outlet links — stay dim, stay monospace */
+  .item-note--dim a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8.5px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(180, 190, 210, 0.12);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    line-height: 1.7;
+  }
+
+  .item-note--dim a:hover {
+    color: var(--text-mid);
+    border-bottom-color: rgba(180, 190, 210, 0.3);
+  }
+
+  footer {
+    margin-top: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(160, 165, 180, 0.22);
+  }
+
+  .footer-copy {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(140, 150, 170, 0.12);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .year-block { grid-template-columns: 44px 1fr; gap: 0 16px; }
+    .year-marker { font-size: 8px; }
+    .category { padding: 32px 0; }
+  }
+
+  @media (hover: none) {
+    .item-link:active {
+      color: rgba(225, 230, 245, 1);
+      border-bottom-color: rgba(180, 190, 210, 0.25);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-header">
+    <a href="/" class="back-link">← Alisa Esage</a>
+    <h1 class="page-title">Record</h1>
+    <p class="page-subtitle">less than life, more than human</p>
+  </div>
+
+  <div class="rule-line"></div>
+
+  <div class="content">
+
+    <!-- ── ORIGIN ── -->
+    <div class="category">
+      <div class="category-label">Origins</div>
+
+      <div class="year-block">
+        <div class="year-marker">1999</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Self-taught x86 assembly language and reverse engineering</span>
+            <span class="item-note">Participant in underground hacking groups.<br>Software protection bypass patches & keygens.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">1999</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">A Quantitative Evaluation of Performance Optimization for Crypto Algorithm Implementations in High-Level Programming Languages vs. Low-Level Assembly</span>
+            <span class="item-note">Rolled her own crypto in x86 asm to show it's faster than Delphi.<br>Paper published at North Caucasus Regional Conference of Scholars, organized by NCSTU/NCFU. Distinguished paper recepient - II degree diploma. Approximate translation from Russian.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── CURRENT ── -->
+    <div class="category">
+      <div class="category-label">Current</div>
+
+      <div class="year-block">
+        <div class="year-marker">2014 —</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Independent Vulnerability Researcher</span>
+            <span class="item-note">Critical security research for leading technological corporations</span>
+            <span class="item-note">Microsoft · Google · Mozilla · Oracle · Apple · Schneider Electric</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2021 —</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com" class="item-link" target="_blank" rel="noopener">Zero Day Engineering</a>
+            <span class="item-note">Exploit design & theory for defense, intelligence, and frontier organizations</span>
+            <span class="item-note">Owner & Principal R&D</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2025 —</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Cognitive Technologies</span>
+            <span class="item-note">Post-human Operator Frameworks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2026 —</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Independent AI & Physics Researcher</span>
+            <span class="item-note">Identity Physics, Emergence Engineering & Cognitive Exploit Theory </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── PRESS ── -->
+    <div class="category">
+      <div class="category-label">Press</div>
+
+      <div class="year-block">
+        <div class="year-marker">2021 –</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Cybersecurity & Hacking</span>
+            <span class="item-note item-note--dim">
+              <a href="https://thehackernews.com/2021/04/windows-ubuntu-zoom-safari-ms-exchange.html" target="_blank" rel="noopener">The Hacker News</a> ·
+              <a href="https://portswigger.net/daily-swig/pwn2own-2021-zero-click-zoom-exploit-among-winners-as-payout-record-smashed" target="_blank" rel="noopener">PortSwigger Daily Swig</a> · <a target="_blank" href="https://itwire.com/business-it-news/security/anger-as-woman-researcher-walks-away-empty-handed-from-hacking-contest.html">ITWire</a> · <a target="_blank" href="https://www.heise.de/news/Gehackt-Windows-Ubuntu-Exchange-Teams-Zoom-Chrome-Safari-und-Edge-6010171.html">Heise</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2016 –</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Geopolitics & National Security</span>
+            <span class="item-note item-note--dim">
+              <a href="https://www.theguardian.com" target="_blank" rel="noopener">The Guardian</a> ·
+              <a href="https://www.nytimes.com" target="_blank" rel="noopener">New York Times</a> ·
+              <a href="https://www.thedailybeast.com/did-this-mysterious-female-hacker-help-crack-the-dnc/" target="_blank" rel="noopener">Daily Beast</a> ·
+              <a href="https://www.defenseone.com/technology/2016/12/accidental-mastermind-dnc-hack/134266/" target="_blank" rel="noopener">Defense One</a> ·
+              <a href="https://www.forbes.com" target="_blank" rel="noopener">Forbes</a> · <a target="_blank" href="https://www.instagram.com/p/BPzTDVeF3Gn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">Grazia</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2014 –</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Entrepreneurship</span> 
+            <span class="item-note item-note--dim">
+              <a href="https://www.instagram.com/p/wJtzyMtbLe/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">Forbes Russia</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2001 -</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Interviews</span>
+            <span class="item-note item-note--dim"><a href="https://therecord.media/a-conversation-with-alisa-esage-a-russian-hacker-who-had-her-company-sanctioned-after-the-2016-election" class="item-link" target="_blank" rel="noopener">The Record</a> · <a target="_blank" href="https://www.instagram.com/p/BA5NEpCNbA0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">Xakep Magazine</a></span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ── TIMELINE ── -->
+    <div class="category">
+      <div class="category-label">Timeline</div>
+
+      <div class="year-block">
+        <div class="year-marker">2026</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://re.alisa.sh/notes/ai-identity.pdf" class="item-link" target="_blank" rel="noopener">AI Identity and the Megapolitics of the Mind</a>
+            <span class="item-note">March 2026. Independent publication.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2021</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com/research/pwn2own-2021-vm-escape.html" class="item-link" target="_blank" rel="noopener">Pwn2Own Vancouver — Parallels Desktop VM escape</a>
+            <span class="item-note">$40,000 target prize. Solo independent entrant.<br>Zero-day guest-to-host VM escape, arbitrary code execution on macOS.<br>100% reliable exploit with a rare bug.<br>First female participant in 17-year Pwn2Own history.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2021</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com" class="item-link" target="_blank" rel="noopener">Zero Day Engineering — founded</a>
+            <span class="item-note">February 2021.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2018</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">ZDI Silver Bounty Hunter</span>
+            <span class="item-note">Annual ranking by Trend Micro Zero Day Initiative.<br>Top independent vulnerability researchers globally.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2016</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="http://phrack.org/issues/69/10.html" class="item-link" target="_blank" rel="noopener">Phrack Magazine #69 — Exploiting Microsoft XML with misalignments and factorials</a>
+            <span class="item-note">Phrack's first issue in four years.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2016</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">US Treasury sanctions — ZOR Security</span>
+            <span class="item-note">Named alongside GRU officers in a classified national security action.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2014</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">PHDays IV — Critical Infrastructure Attack Competition</span>
+            <span class="item-note">Won 1st place. Hacked a live mock smart city under contest conditions.<br>Discovered multiple zero-days in Schneider Electric ICS products.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2011</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Neuronspace — co-founded</span>
+            <span class="item-note">First hackerspace in Russia.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2009</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Esage Lab — founded</span>
+            <span class="item-note">Independent offensive security research and consulting.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2003</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Malware analyst, Kaspersky Lab</span>
+            <span class="item-note">Specialized in rootkits and protection bypass. 2003–2009.<br>First female professional malware analyst globally.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── TALKS ── -->
+    <div class="category">
+      <div class="category-label">Talks</div>
+
+      <div class="year-block">
+        <div class="year-marker">2025</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://www.blackhat.com/asia-25/briefings/schedule/#unveiling-the-mysteries-of-qualcomms-qdsp-jtag-a-journey-into-advanced-theoretical-reverse-engineering-44550" class="item-link" target="_blank" rel="noopener">Unveiling the Mysteries of Qualcomm's QDSP6 JTAG</a>
+            <span class="item-note item-note--dim">Black Hat Asia · Singapore<br>Reverse-engineered Qualcomm hardware debugging and low-level security mechanisms of Hexagon basebands. Original public exposure of ISDB system internals.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2025</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Fuzzing from First Principles</span>
+            <span class="item-note item-note--dim">SANS Off by One<br>Introduced Probabilistic Fuzzing Theory.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2024</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com/research/slides/VXCON2024_Workshop.pdf" class="item-link" target="_blank" rel="noopener">Attacking V8: Zero to Exploit</a>
+            <span class="item-note item-note--dim">VXCON · Hong Kong<br>Advanced exploit development workshop. Full walkthrough from patch to PoC.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2024</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="#" class="item-link" target="_blank" rel="noopener">Keynote</a>
+            <span class="item-note item-note--dim">VXCON · Hong Kong<br>Vulnerability Research in the Age of AI</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="year-block">
+        <div class="year-marker">2020</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Hypervisor Vulnerability Research</span>
+            <span class="item-note item-note--dim">POC×Zer0con<br>Introduced the Hypervisor Attack Surface model.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2020</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">Advanced Hexagon Diag</span>
+            <span class="item-note item-note--dim"><a href="https://events.ccc.de/rc3/2020/Fahrplan/speakers/12610.html" target="_blank" rel="noopener">Chaos Communications Congress<br>Published undocumented system internals of Qualcomm QSDP internal debugging protocols.</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2014</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">My Journey Into 0-Day Binary Vulnerability Discovery</span>
+            <span class="item-note item-note--dim"><a href="https://phdays.com" target="_blank" rel="noopener">Positive Hack Days</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2012</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">— placeholder —</span>
+            <span class="item-note item-note--dim">InfoSecurity</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2012</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">— placeholder —</span>
+            <span class="item-note item-note--dim">ZeroNights</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2011</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">— placeholder —</span>
+            <span class="item-note item-note--dim"><a href="https://recon.cx" target="_blank" rel="noopener">RECon</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2009</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">— placeholder —</span>
+            <span class="item-note item-note--dim">RusCrypto</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── TAUGHT ── -->
+    <div class="category">
+      <div class="category-label">Teaching</div>
+
+      <div class="year-block">
+        <div class="year-marker">2020 —</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com" class="item-link" target="_blank" rel="noopener">Hypervisor Vulnerability Research</a>
+            <span class="item-note">Alumni include multiple Pwn2Own winners.<br>Several attendees found hypervisor bugs worth $250,000.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2021 —</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com" class="item-link" target="_blank" rel="noopener">Zero Day Vulnerability Research</a>
+            <span class="item-note">Universal foundations for specialized exploit development.<br>The only entry-compatible course in the industry built by top-tier hacker.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2025 —</div>
+        <div class="year-items">
+          <div class="item">
+            <a href="https://zerodayengineering.com" class="item-link" target="_blank" rel="noopener">Browser Exploit Design</a>
+            <span class="item-note">Full knowledge stack for attacking browsers. Browser Exploit Surface models.<br>Exercises showcase typical bug classes across RCE and Sandbox Escape surfaces.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block">
+        <div class="year-marker">2019</div>
+        <div class="year-items">
+          <div class="item">
+            <span class="item-text">iBootcamp</span>
+            <span class="item-note">A journey into iOS security.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-name">Alisa Esage Шевченко</div>
+    <div class="footer-copy">© 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
