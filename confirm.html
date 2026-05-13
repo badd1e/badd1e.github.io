@@ -1,5 +1,32 @@
 <!DOCTYPE html>
-<html><head><script>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #07080d;
+    color: rgba(160, 165, 180, 0.6);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+</style>
+</head>
+<body>
+<div id="msg">...</div>
+<script>
   const token = new URLSearchParams(window.location.search).get('token');
-  window.location.href = 'https://script.google.com/macros/s/AKfycbw3qtOKKxtC4rt6AZ4ohQa0GuCXjKyTHyHCbjahjRnVmN-KBz7NtFpP0-4HrZQ_7rET/exec?token=' + token;
-</script></head></html>
+  fetch('https://script.google.com/macros/s/AKfycbw3qtOKKxtC4rt6AZ4ohQa0GuCXjKyTHyHCbjahjRnVmN-KBz7NtFpP0-4HrZQ_7rET/exec?token=' + encodeURIComponent(token))
+    .then(r => r.json())
+    .then(data => { document.getElementById('msg').textContent = data.ok ? 'Confirmed.' : 'Error.'; })
+    .catch(() => { document.getElementById('msg').textContent = 'Error.'; });
+</script>
+</body>
+</html>
