@@ -331,16 +331,18 @@
     color: var(--text);
   }
 
-  /* Success state */
-  .access-success {
+  /* Success / error states */
+  .access-success, .access-error {
     display: none;
     font-family: 'Share Tech Mono', monospace;
     font-size: 9px;
     letter-spacing: 3px;
-    color: var(--text-dim);
     text-transform: uppercase;
     text-align: center;
   }
+
+  .access-success { color: var(--text-dim); }
+  .access-error   { color: rgba(210, 100, 100, 0.6); }
 
   /* ── FOOTER ── */
   footer {
@@ -465,7 +467,7 @@
     <a href="https://t.me/alisaesage" target="_blank" rel="noopener">Telegram</a>
   </div>
 
-  <!-- MAILING LIST — Kit (ConvertKit) via fetch, no form submission, no redirect 
+  <!-- MAILING LIST -->
   <div class="access-denied">
     <div class="access-label">Access Denied</div>
     <div class="access-form" id="access-form">
@@ -479,10 +481,55 @@
         autocapitalize="off"
         onkeydown="if(event.key==='Enter') handleSubmit()"
       />
-      <button class="access-submit" onclick="handleSubmit()">Request</button>
+      <button class="access-submit" id="access-btn" onclick="handleSubmit()">Request</button>
     </div>
     <div class="access-success" id="success-msg">Success.</div>
-  </div> -->
+    <div class="access-error" id="error-msg">Error. Try again later.</div>
+  </div>
+
+  <script>
+  const _msg = new URLSearchParams(window.location.search).get('msg');
+  if (_msg) {
+    document.getElementById('access-form').style.display = 'none';
+    const el = _msg.toLowerCase().includes('confirmed')
+      ? document.getElementById('success-msg')
+      : document.getElementById('error-msg');
+    el.style.display = 'block';
+  }
+
+  async function handleSubmit() {
+    const input = document.getElementById('access-email');
+    const btn = document.getElementById('access-btn');
+    const email = input.value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = '...';
+    document.getElementById('error-msg').style.display = 'none';
+    try {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbw3qtOKKxtC4rt6AZ4ohQa0GuCXjKyTHyHCbjahjRnVmN-KBz7NtFpP0-4HrZQ_7rET/exec', {
+        method: 'POST',
+        body: new URLSearchParams({ email })
+      });
+      console.log('status:', res.status, res.url);
+      const text = await res.text();
+      console.log('body:', text);
+      const data = JSON.parse(text);
+      if (data.ok) {
+        document.getElementById('access-form').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      } else {
+        document.getElementById('error-msg').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Request';
+      }
+    } catch(err) {
+      console.error('fetch error:', err);
+      document.getElementById('error-msg').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Request';
+    }
+  }
+  </script>
 
   <!-- FOOTER -->
   <footer>
