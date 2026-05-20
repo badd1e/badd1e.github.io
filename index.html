@@ -344,6 +344,101 @@
   .access-success { color: var(--text-dim); }
   .access-error   { color: rgba(210, 100, 100, 0.6); }
 
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 8, 13, 0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-box {
+    width: min(400px, 100%);
+    border: 1px solid var(--rule-bright);
+    padding: 40px 36px;
+    background: #07080d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .modal-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .modal-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .modal-field-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .modal-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule-bright);
+    padding: 8px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .modal-input::placeholder {
+    color: var(--text-dim);
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .modal-input:focus {
+    border-bottom-color: rgba(180, 195, 225, 0.4);
+  }
+
+  .modal-actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .modal-confirm-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(15px, 2.2vw, 17px);
+    color: var(--text-mid);
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
   /* ── FOOTER ── */
   footer {
     margin-top: 80px;
@@ -487,6 +582,38 @@
     <div class="access-error" id="error-msg">Error. Try again later.</div>
   </div>
 
+  <!-- MODAL 1: metadata -->
+  <div class="modal-overlay" id="modal-meta">
+    <div class="modal-box">
+      <div class="modal-label">Access Request</div>
+      <div class="modal-field">
+        <label class="modal-field-label">Full Name</label>
+        <input class="modal-input" id="meta-name" type="text" placeholder="" autocomplete="name" spellcheck="false" />
+      </div>
+      <div class="modal-field">
+        <label class="modal-field-label">What brings you here?</label>
+        <input class="modal-input" id="meta-signal" type="text" placeholder="e.g. a specific publication or news piece" spellcheck="false" />
+      </div>
+      <div class="modal-field">
+        <label class="modal-field-label">Primary Interest</label>
+        <input class="modal-input" id="meta-interest" type="text" placeholder="e.g. exploit research, AI, productivity" spellcheck="false" />
+      </div>
+      <div class="modal-actions">
+        <button class="access-submit" id="meta-cancel" onclick="closeModal()">Cancel</button>
+        <button class="access-submit" id="meta-submit" onclick="submitMeta()">Proceed</button>
+      </div>
+      <div class="access-error" id="modal-error" style="margin-top:16px">Error. Try again later.</div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: confirmation -->
+  <div class="modal-overlay" id="modal-confirm">
+    <div class="modal-box">
+      <div class="modal-confirm-text">One more step — check your email to confirm your subscription.</div>
+      <button class="access-submit" onclick="closeConfirm()">OK</button>
+    </div>
+  </div>
+
   <script>
   const _msg = new URLSearchParams(window.location.search).get('msg');
   if (_msg) {
@@ -497,38 +624,70 @@
     el.style.display = 'block';
   }
 
-  async function handleSubmit() {
-    const input = document.getElementById('access-email');
+  function handleSubmit() {
+    const email = document.getElementById('access-email').value.trim();
+    if (!email || !email.includes('@')) return;
+    document.getElementById('modal-error').style.display = 'none';
+    document.getElementById('modal-meta').classList.add('active');
+    document.getElementById('meta-name').focus();
+  }
+
+  function closeModal() {
+    document.getElementById('modal-meta').classList.remove('active');
     const btn = document.getElementById('access-btn');
-    const email = input.value.trim();
-    if (!email) return;
+    btn.disabled = false;
+    btn.textContent = 'Request';
+  }
+
+  function closeConfirm() {
+    document.getElementById('modal-confirm').classList.remove('active');
+    document.getElementById('access-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+
+  async function submitMeta() {
+    const btn = document.getElementById('meta-submit');
     btn.disabled = true;
     btn.textContent = '...';
-    document.getElementById('error-msg').style.display = 'none';
+    document.getElementById('modal-error').style.display = 'none';
+
+    const params = new URLSearchParams({
+      email:    document.getElementById('access-email').value.trim(),
+      name:     document.getElementById('meta-name').value.trim(),
+      signal:   document.getElementById('meta-signal').value.trim(),
+      interest: document.getElementById('meta-interest').value.trim(),
+      referrer: document.referrer || '',
+      utm_source:   new URLSearchParams(location.search).get('utm_source')   || '',
+      utm_medium:   new URLSearchParams(location.search).get('utm_medium')   || '',
+      utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
+    });
+
     try {
       const res = await fetch('https://script.google.com/macros/s/AKfycbw3qtOKKxtC4rt6AZ4ohQa0GuCXjKyTHyHCbjahjRnVmN-KBz7NtFpP0-4HrZQ_7rET/exec', {
         method: 'POST',
-        body: new URLSearchParams({ email })
+        body: params
       });
-      console.log('status:', res.status, res.url);
-      const text = await res.text();
-      console.log('body:', text);
-      const data = JSON.parse(text);
+      const data = JSON.parse(await res.text());
       if (data.ok) {
-        document.getElementById('access-form').style.display = 'none';
-        document.getElementById('success-msg').style.display = 'block';
+        document.getElementById('modal-meta').classList.remove('active');
+        document.getElementById('modal-confirm').classList.add('active');
       } else {
-        document.getElementById('error-msg').style.display = 'block';
+        document.getElementById('modal-error').style.display = 'block';
         btn.disabled = false;
-        btn.textContent = 'Request';
+        btn.textContent = 'Proceed';
       }
     } catch(err) {
-      console.error('fetch error:', err);
-      document.getElementById('error-msg').style.display = 'block';
+      console.error(err);
+      document.getElementById('modal-error').style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Request';
+      btn.textContent = 'Proceed';
     }
   }
+
+  document.getElementById('modal-meta').addEventListener('keydown', e => {
+    if (e.key === 'Enter') submitMeta();
+    if (e.key === 'Escape') closeModal();
+  });
   </script>
 
   <!-- FOOTER -->
