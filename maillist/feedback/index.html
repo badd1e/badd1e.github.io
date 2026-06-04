@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback - Access Denied</title>
+<style>
+  body { max-width:600px; margin:60px auto; font-family:Georgia,serif; color:#222; font-size:16px; line-height:1.7; padding:0 20px; }
+  h1 { font-size:16px; font-weight:bold; margin:0 0 8px 0; }
+  .sub { color:#999; font-size:14px; margin:0 0 32px 0; }
+  label { display:block; font-size:13px; color:#666; margin-bottom:4px; }
+  input[type=text], input[type=email], textarea {
+    width:100%; border:1px solid #ddd; padding:8px 10px;
+    font-family:Georgia,serif; font-size:15px; color:#222;
+    box-sizing:border-box; outline:none; margin-bottom:16px;
+    background:#fff;
+  }
+  input:focus, textarea:focus { border-color:#999; }
+  textarea { height:100px; resize:vertical; }
+  button {
+    background:#222; color:#fff; border:none;
+    padding:10px 28px; font-family:Georgia,serif; font-size:15px;
+    cursor:pointer;
+  }
+  button:hover { background:#444; }
+  button:disabled { opacity:0.4; cursor:default; }
+  #status { margin-top:16px; font-size:14px; color:#666; }
+  #status.err { color:#c00; }
+  .footer { margin-top:48px; font-size:12px; color:#999; }
+  .footer a { color:#999; text-decoration:none; }
+  .footer a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<h1>Feedback</h1>
+<p class="sub">Reply to anything &mdash; questions, corrections, thoughts on the issue.</p>
+
+<form id="form">
+  <label>Name</label>
+  <input type="text" id="name" autocomplete="name" required>
+
+  <label>Company</label>
+  <input type="text" id="company" autocomplete="organization" required>
+
+  <label>Role</label>
+  <input type="text" id="role" autocomplete="organization-title" required>
+
+  <label>How did you first come across my work?</label>
+  <input type="text" id="heard" required>
+
+  <label>What specifically about my work or perspective do you find most valuable?</label>
+  <textarea id="valuable" required></textarea>
+
+  <label>What do you think I get right that most people in the field miss?</label>
+  <textarea id="insight" required></textarea>
+
+  <label>What would you tell a colleague about my work?</label>
+  <textarea id="recommend" required></textarea>
+
+  <label>Anything else (optional)</label>
+  <textarea id="message"></textarea>
+
+  <button type="submit">Send</button>
+</form>
+
+<div id="status"></div>
+
+<div class="footer">
+  <a href="../archives">Archives</a> &ndash;
+  <a href="https://alisa.sh">Subscribe</a>
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWck5kgZL9Kyzn6I11Iw4JcDWOf_w-WgPu_XKLdZA2I29nzoaCCpaC5oOQlT4VOwpD/exec';
+
+document.getElementById('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn      = this.querySelector('button');
+  const status   = document.getElementById('status');
+  const name      = document.getElementById('name').value.trim();
+  const company   = document.getElementById('company').value.trim();
+  const role      = document.getElementById('role').value.trim();
+  const heard     = document.getElementById('heard').value.trim();
+  const valuable  = document.getElementById('valuable').value.trim();
+  const insight   = document.getElementById('insight').value.trim();
+  const recommend = document.getElementById('recommend').value.trim();
+  const message   = document.getElementById('message').value.trim();
+
+  btn.disabled = true;
+  status.textContent = '';
+  status.className = '';
+
+  try {
+    const resp = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ name, company, role, heard, valuable, insight, recommend, message }),
+    });
+    const data = await resp.json();
+    if (data.ok) {
+      status.textContent = 'Sent. Thank you.';
+      document.getElementById('form').reset();
+    } else {
+      status.textContent = 'Something went wrong. Try again.';
+      status.className = 'err';
+    }
+  } catch (err) {
+    status.textContent = 'Network error. Try again.';
+    status.className = 'err';
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
