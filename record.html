@@ -24,6 +24,7 @@
     --text-mid: rgba(190, 195, 210, 0.6);
     --rule: rgba(180, 190, 210, 0.1);
     --rule-bright: rgba(180, 190, 210, 0.18);
+    --accent: #0C2073;
   }
 
   html, body {
@@ -175,7 +176,7 @@
 
   .item-link:hover {
     color: rgba(225, 230, 245, 1);
-    border-bottom-color: rgba(180, 190, 210, 0.25);
+    border-bottom-color: var(--accent);
   }
 
   .item-text {
@@ -212,7 +213,7 @@
 
   .item-note a:hover {
     color: rgba(225, 230, 245, 1);
-    border-bottom-color: rgba(180, 190, 210, 0.25);
+    border-bottom-color: var(--accent);
   }
 
   /* Press outlet links — stay dim, stay monospace */
@@ -224,14 +225,14 @@
     text-transform: uppercase;
     color: var(--text-dim);
     text-decoration: none;
-    border-bottom: 1px solid rgba(180, 190, 210, 0.12);
+    border-bottom: 1px solid transparent;
     transition: color 0.2s ease, border-color 0.2s ease;
     line-height: 1.7;
   }
 
   .item-note--dim a:hover {
     color: var(--text-mid);
-    border-bottom-color: rgba(180, 190, 210, 0.3);
+    border-bottom-color: var(--accent);
   }
 
   footer {
@@ -267,7 +268,7 @@
   @media (hover: none) {
     .item-link:active {
       color: rgba(225, 230, 245, 1);
-      border-bottom-color: rgba(180, 190, 210, 0.25);
+      border-bottom-color: var(--accent);
     }
   }
 </style>
@@ -499,7 +500,7 @@
 
     <!-- ── TALKS ── -->
     <div class="category">
-      <div class="category-label">Talks</div>
+      <div class="category-label">Conference Talks</div>
 
       <div class="year-block">
         <div class="year-marker">2025</div>

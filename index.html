@@ -27,6 +27,7 @@
     --text-mid: rgba(190, 195, 210, 0.6);
     --rule: rgba(180, 190, 210, 0.1);
     --rule-bright: rgba(180, 190, 210, 0.18);
+    --accent: #0C2073;
   }
 
   html, body {
@@ -119,7 +120,7 @@
 
   .transmission a:hover {
     color: var(--text);
-    border-bottom-color: rgba(180, 190, 210, 0.4);
+    border-bottom-color: var(--accent);
   }
 
   /* ── NAV ── */
@@ -138,11 +139,14 @@
     color: var(--text-dim);
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
   }
 
   nav a:hover {
     color: var(--text-mid);
+    border-bottom-color: var(--accent);
   }
 
   nav .sep {
@@ -244,11 +248,14 @@
     color: var(--text-dim);
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
   }
 
   .socials a:hover {
     color: var(--text-mid);
+    border-bottom-color: var(--accent);
   }
 
   /* ── MAILING LIST ── */
@@ -262,11 +269,11 @@
   }
 
   .access-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 5px;
-    color: var(--text-dim);
-    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(17px, 2.8vw, 21px);
+    letter-spacing: 0.5px;
+    color: var(--text);
     margin-bottom: 20px;
     text-align: center;
   }
@@ -303,7 +310,7 @@
   }
 
   .access-input:focus {
-    border-bottom-color: rgba(180, 195, 225, 0.4);
+    border-bottom-color: var(--accent);
   }
 
   .access-submit {
@@ -323,7 +330,7 @@
   }
 
   .access-submit:hover {
-    border-color: rgba(180, 195, 225, 0.35);
+    border-color: var(--accent);
     color: var(--text-mid);
   }
 
@@ -497,8 +504,8 @@
   @media (hover: none) {
     .brand-item:active .brand-name { color: rgba(220, 225, 240, 1); }
     .brand-item:active .brand-desc { color: rgba(170, 175, 195, 0.65); }
-    nav a:active { color: var(--text-mid); }
-    .socials a:active { color: var(--text-mid); }
+    nav a:active { color: var(--text-mid); border-bottom-color: var(--accent); }
+    .socials a:active { color: var(--text-mid); border-bottom-color: var(--accent); }
     .access-submit:active {
       border-color: rgba(180, 195, 225, 0.35);
       color: var(--text-mid);
@@ -541,7 +548,7 @@
 
     <a href="#" class="brand-item">
       <div class="brand-name">Reality Model Mastermind</div>
-      <div class="brand-desc">Private cohorts for post-human operators<br>Subscribe to get notified</div>
+      <div class="brand-desc">Private programs for post-human operators<br>Subscribe to get notified</div>
     </a>
 
     <a href="https://zerodayengineering.com" class="brand-item" target="_blank" rel="noopener">
