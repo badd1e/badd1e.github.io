@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-46PC67S5PN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-46PC67S5PN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Alisa Esage</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Share+Tech+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #07080d;
+    --text: rgba(210, 215, 225, 0.88);
+    --text-dim: rgba(160, 165, 180, 0.38);
+    --text-mid: rgba(190, 195, 210, 0.6);
+    --rule: rgba(180, 190, 210, 0.1);
+    --rule-bright: rgba(180, 190, 210, 0.18);
+    --accent: #0C2073;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .container {
+    padding: 0 32px;
+  }
+
+  .code {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 6vw, 48px);
+    color: var(--text);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--text-mid);
+    border-bottom-color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <p class="code">404</p>
+  <h1>Page not found</h1>
+  <a href="/">alisa.sh</a>
+</div>
+
+</body>
+</html>
