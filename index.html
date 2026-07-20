@@ -123,11 +123,22 @@
     border-bottom-color: var(--accent);
   }
 
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
   /* ── NAV ── */
   nav {
     margin-top: 40px;
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    gap: 16px;
     align-items: center;
     justify-content: center;
   }
@@ -218,6 +229,49 @@
     max-width: 380px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* ── EVENTS ── */
+  .events {
+    width: min(520px, 88vw);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-item {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    display: block;
+    transition: color 0.25s ease;
+  }
+
+  .event-item:first-child {
+    border-top: 1px solid var(--rule);
+  }
+
+  .event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--text-mid);
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+  }
+
+  .event-item:hover .event-name {
+    color: var(--text);
+  }
+
+  .event-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-top: 7px;
+    text-transform: uppercase;
   }
 
   /* ── RULE ── */
@@ -475,7 +529,7 @@
   /* ── MOBILE ── */
   @media (max-width: 600px) {
     nav {
-      gap: 24px;
+      gap: 12px;
     }
 
     .rule-line {
@@ -532,16 +586,20 @@
     <a href="https://re.alisa.sh/notes/ai-identity.pdf" target="_blank" rel="noopener">
       AI Identity and the Megapolitics of the Mind
     </a>
+    <a href="https://zerodayengineering.com/research/chrome-exploit-mitigations/" target="_blank" rel="noopener" style="margin-top:12px;display:block;">
+      Chrome Exploit Mitigations
+    </a>
   </div>
 
   <!-- NAV -->
-  <nav>
-    <a target="_blank" href="https://zerodayengineering.com/research">Research</a>
-    <span class="sep">·</span>
-    <a href="record.html">Record</a>
+  <nav style="margin-top:56px;">
+    <a href="research.html">Research</a>
+    <a href="timeline.html">Timeline</a>
   </nav>
 
   <div class="rule-line"></div>
+
+  <div class="section-label">My projects</div>
 
   <!-- BRANDS -->
   <div class="brands">
@@ -558,16 +616,24 @@
 
   </div>
 
-  <div class="rule-line-short"></div>
-
-  <!-- SOCIALS -->
-  <div class="socials">
-    <a href="https://twitter.com/alisaesage" target="_blank" rel="noopener">Twitter</a>
-    <a href="https://youtube.com/@alisaesage" target="_blank" rel="noopener">YouTube</a>
+  <div class="section-label" style="margin-top:72px;">Upcoming events</div>
+  <div class="events" style="margin-top:0;">
+    <a class="event-item" href="https://zerodayengineering.com/training/chrome-full-chain/" target="_blank" rel="noopener">
+      <div class="event-name">Chrome Full Chain Exploit Engineering</div>
+      <div class="event-meta">training · Aug 25–28, 2026 · online · €6,000–8,000</div>
+    </a>
+    <a class="event-item" href="https://www.c0c0n.org/" target="_blank" rel="noopener">
+      <div class="event-name">Keynote at c0c0n 2026</div>
+      <div class="event-meta">keynote · Oct 6–13, 2026 · Kochi, India</div>
+    </a>
   </div>
 
+  <div class="rule-line-short"></div>
+
+  <div class="section-label">Newsletter</div>
+
   <!-- MAILING LIST -->
-  <div class="access-denied">
+  <div class="access-denied" style="margin-top:20px;">
     <div class="access-label">Access Denied</div>
     <div class="access-form" id="access-form">
       <input
@@ -584,6 +650,12 @@
     </div>
     <div class="access-success" id="success-msg">Success.</div>
     <div class="access-error" id="error-msg">Error. Try again later.</div>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials" style="margin-top:40px;">
+    <a href="https://twitter.com/alisaesage" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://youtube.com/@alisaesage" target="_blank" rel="noopener">YouTube</a>
   </div>
 
   <!-- MODAL 1: metadata -->

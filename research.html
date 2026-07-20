@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-46PC67S5PN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-46PC67S5PN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Alisa Esage</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Share+Tech+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #07080d;
+    --text: rgba(210, 215, 225, 0.88);
+    --text-dim: rgba(160, 165, 180, 0.38);
+    --text-mid: rgba(190, 195, 210, 0.6);
+    --rule: rgba(180, 190, 210, 0.1);
+    --rule-bright: rgba(180, 190, 210, 0.18);
+    --accent: #0C2073;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--text-mid);
+    border-bottom-color: var(--accent);
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 5vw, 38px);
+    letter-spacing: 2px;
+    color: var(--text);
+    text-align: center;
+    align-self: stretch;
+  }
+
+  .page-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 14px;
+    text-align: center;
+    line-height: 1.8;
+    align-self: stretch;
+  }
+
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .rule {
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 52px 0;
+  }
+
+  /* ── AI IDENTITY FEATURE BLOCK ── */
+  .feature-block {
+    width: 100%;
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .feature-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--text);
+    letter-spacing: 0.3px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .feature-abstract {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .feature-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .feature-link:hover {
+    color: var(--text-mid);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── RESEARCH LIST ── */
+  .research-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .research-item {
+    width: 100%;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .research-item:first-child {
+    border-top: 1px solid var(--rule);
+  }
+
+  .research-item-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .research-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--text-mid);
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    display: inline;
+  }
+
+  .research-item:hover .research-item-title {
+    color: rgba(225, 230, 245, 1);
+    border-bottom-color: var(--accent);
+  }
+
+  .research-item-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(13px, 1.8vw, 15px);
+    color: var(--text-dim);
+    margin-top: 6px;
+    line-height: 1.6;
+    transition: color 0.2s ease;
+  }
+
+  .research-item:hover .research-item-desc {
+    color: var(--text-mid);
+  }
+
+  .rule-line {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, rgba(180, 195, 225, 0.18), transparent);
+    margin: 64px auto 48px;
+    align-self: center;
+  }
+
+  footer {
+    margin-top: 80px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(160, 165, 180, 0.22);
+  }
+
+  .footer-copy {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(140, 150, 170, 0.12);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="/">← Alisa Esage</a>
+
+  <h1 class="page-title">Research</h1>
+  <p class="page-subtitle">systems all the way up</p>
+
+  <div class="rule-line"></div>
+
+  <!-- AI RESEARCH -->
+  <div class="section-label">Physics, Artificial Intelligence, and Meta-Cognition</div>
+
+  <div class="feature-block">
+    <div class="feature-date">7 March 2026</div>
+    <div class="feature-title">AI Identity and the Megapolitics of the Mind</div>
+    <div class="feature-abstract">This paper re-introduces and clarifies the shared identity model, and establishes the relevant new concepts. It explores broader technological and civilizational implications of the model being accurate. It concludes with a controlled disclosure of a critical, unpatchable vulnerability in the human cognitive stack; exemplified with a proof-of-concept attack via AI technology, as caught in the wild.</div>
+    <a class="feature-link" href="notes/ai-identity.pdf" target="_blank" rel="noopener">Download PDF</a>
+  </div>
+
+  <hr class="rule">
+
+  <!-- VULNERABILITY RESEARCH -->
+  <div class="section-label">Vulnerability Research and Exploit Engineering</div>
+
+  <div class="research-list">
+
+    <a class="research-item" href="https://zerodayengineering.com/research/chrome-exploit-mitigations/" target="_blank" rel="noopener">
+      <div class="research-item-meta">June 2026 · Exploit Design · Browsers &amp; JavaScript</div>
+      <div class="research-item-title">Chrome Exploit Mitigations</div>
+      <div class="research-item-desc">A firsthand account of modern Chrome-specific exploit mitigations encountered while zero day engineering for Google Chrome across renderer, network service, and browser process.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/slides/BH2025_ReverseEngineeringHexagonISDB.pdf" target="_blank" rel="noopener">
+      <div class="research-item-meta">April 2025 · Reverse Engineering · Firmware &amp; Baseband</div>
+      <div class="research-item-title">Unveiling the Mysteries of Qualcomm's QDSP6 JTAG</div>
+      <div class="research-item-desc">Reverse-engineering the hardware internals of Qualcomm Hexagon ISDB JTAG — a tightly restricted proprietary architecture that doesn't permit low-level debugging. Presented at Black Hat Asia 2025, Singapore.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/slides/VXCON2024_Workshop.pdf" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2024 · Exploit Design · Browsers &amp; JavaScript</div>
+      <div class="research-item-title">Attacking v8 Zero to Exploit</div>
+      <div class="research-item-desc">Full process of exploiting a non-trivial vulnerability in Chrome's v8 JavaScript engine, from zero-knowledge patch to novel exploit concept. Workshop at VXCON 2024, Hong Kong.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/slides/VXCON2024_Keynote.pdf" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2024 · Keynote · AI Security</div>
+      <div class="research-item-title">Vulnerability Research in the Age of AI</div>
+      <div class="research-item-desc">How AI is changing the art of vulnerability research. Keynote at VXCON 2024, Hong Kong.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/discussion-fuzzing-from-first-principles.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">October 2024 · Theoretical Research · Fuzzing</div>
+      <div class="research-item-title">Fuzzing from First Principles</div>
+      <div class="research-item-desc">The Probabilistic Theory of Fuzzing, and how practical low-level fuzzing works through it. With selected questions from the Off By One Security Podcast livestream.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/pwn2own-2021-vm-escape.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">2024 · Zero Day Engineering · Hypervisors &amp; Virtualization</div>
+      <div class="research-item-title">Pwn2Own 2021: Solo Hypervisor VM Escape</div>
+      <div class="research-item-desc">First female solo entrant at Pwn2Own Vancouver. Zero-day virtual machine escape against the Parallels hypervisor. Full technical walkthrough and exploit source code.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/insights/chrome-webrtc-cve-2023-7024.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">December 2023 · 0-Day Insights · Browsers &amp; JavaScript</div>
+      <div class="research-item-title">Google Chrome WebRTC 0-Day (CVE-2023-7024)</div>
+      <div class="research-item-desc">Analysis and research insights for a RCE vulnerability in Chromium WebRTC code and embedders.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/insights/qualcomm-msm-arm-mali-0days.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">December 2023 · 0-Day Insights · Kernel · Firmware</div>
+      <div class="research-item-title">Qualcomm MSM &amp; ARM Mali Kernel 0-Day Exploit Attacks</div>
+      <div class="research-item-desc">Reverse engineering of zero-day bugs targeting Qualcomm Linux kernel and ARM Mali GPU. Technical deep-dive on the bugs and their target systems.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/insights/chrome-skia-cve-2023-6345.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2023 · 0-Day Insights · Browsers &amp; JavaScript</div>
+      <div class="research-item-title">Google Chrome Skia Vulnerability Insights (CVE-2023-6345)</div>
+      <div class="research-item-desc">Analysis of security patches for a Chrome 0-day attack to derive additional vulnerability information and clarify practical threat impact.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/javascript-engines-exploitation-jscript9.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">December 2021 · Exploit Design · Browsers &amp; JavaScript</div>
+      <div class="research-item-title">JavaScript Engines Exploitation: a Jscript9 Case Study</div>
+      <div class="research-item-desc">Exploit for a JavaScript JIT Type Confusion vulnerability in Jscript9.dll. Universal technique with fully dynamic ASLR bypass and state-of-the-art process continuation.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/slides/ZDE2021_AdvancedEasyPwn2Own2021.pdf" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2021 · Exploit Design · Hypervisors &amp; Virtualization</div>
+      <div class="research-item-title">Advanced Exploitation of Simple Bugs: Parallels Desktop (Pwn2Own 2021)</div>
+      <div class="research-item-desc">Technical deep-dive on the Pwn2Own 2021 Parallels Desktop VM escape exploit chain, built on logic issues.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/vmware-esxi-vmxnet3-from-patch-to-poc.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">May 2021 · Exploit Design · Hypervisors &amp; Virtualization</div>
+      <div class="research-item-title">From Binary Patch to Proof-of-Concept: VMware ESXi vmxnet3 (CVE-2018-6981)</div>
+      <div class="research-item-desc">Reverse engineering a complex binary patch for a VMware ESXi bug. Universal methodology applicable beyond hypervisors.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/dont-share-your-home.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">April 2021 · Vulnerability Discovery · Hypervisors &amp; Virtualization</div>
+      <div class="research-item-title">Don't Share Your $HOME with Untrusted Guests</div>
+      <div class="research-item-desc">A no-bug, by-design guest-to-host VM escape on Parallels Desktop for Mac, enabled by product design decisions and Unix shell properties.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/hyper-v-vmswitch-oobr.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">February 2021 · Vulnerability Discovery · Hypervisors &amp; Virtualization</div>
+      <div class="research-item-title">Microsoft Hyper-V Virtual Network Switch Out-of-Bounds Read</div>
+      <div class="research-item-desc">Security bug in Microsoft Hyper-V root partition kernel component. $15,000 cash bounty.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/hyper-v-internals-linux-drivers.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">May 2020 · Reverse Engineering · Hypervisors &amp; Virtualization</div>
+      <div class="research-item-title">Hyper-V System Internals &amp; Linux Integration Services Drivers</div>
+      <div class="research-item-desc">Core system internals of Microsoft Hyper-V hypercall interface, reverse engineered via the Linux Integration Services kernel drivers.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/iboot-heap-internals.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2019 · Reverse Engineering · iOS &amp; Bootchain</div>
+      <div class="research-item-title">iBoot Heap Internals</div>
+      <div class="research-item-desc">Apple bootchain heap implementation — classical first-fit free-list allocator with 30 bins, immediate coalescing, and layered security mitigations. Foundational for heap-based exploit development against Secure Boot.</div>
+    </a>
+
+    <a class="research-item" href="https://zerodayengineering.com/research/iboot-address-space.html" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2019 · Reverse Engineering · iOS &amp; Bootchain</div>
+      <div class="research-item-title">iBoot Address Space</div>
+      <div class="research-item-desc">Apple devices' bootchain memory layout across all boot stages, with a focus on SecuROM and iBoot. Detailed memory map of iPhone 5 during boot, with hardening recommendations.</div>
+    </a>
+
+    <a class="research-item" href="https://phrack.org/issues/69/10" target="_blank" rel="noopener">
+      <div class="research-item-meta">May 2016 · Exploit Design · Browsers &amp; XML</div>
+      <div class="research-item-title">Self-patching Microsoft XML with Misalignments and Factorials</div>
+      <div class="research-item-desc">Technical analysis of CVE-2013-0007 (Microsoft XML Core Services Use-After-Free), exploitation techniques, and heap manipulation strategies with Internet Explorer. Phrack #69.</div>
+    </a>
+
+  </div>
+
+  <hr class="rule">
+
+  <!-- MALWARE ANALYSIS -->
+  <div class="section-label">Malware Analysis and Incident Response</div>
+
+  <div class="research-list">
+
+    <a class="research-item" href="https://www.virusbulletin.com/virusbulletin/2010/12/case-study-ibank-trojan/" target="_blank" rel="noopener">
+      <div class="research-item-meta">December 2010 · Malware Analysis · Banking Trojans</div>
+      <div class="research-item-title">Case Study: the Ibank Trojan</div>
+      <div class="research-item-desc">In-depth analysis of Ibank, a trojan targeting Russian online banking systems. Virus Bulletin.</div>
+    </a>
+
+    <a class="research-item" href="https://www.virusbulletin.com/virusbulletin/2010/05/tdss-infections-quarterly-report" target="_blank" rel="noopener">
+      <div class="research-item-meta">May 2010 · Malware Analysis · Rootkits</div>
+      <div class="research-item-title">TDSS Infections — Quarterly Report</div>
+      <div class="research-item-desc">Statistical analysis of TDSS malware infections based on removal tool data. Virus Bulletin.</div>
+    </a>
+
+    <a class="research-item" href="https://www.virusbulletin.com/virusbulletin/2009/11/detecting-bootkits" target="_blank" rel="noopener">
+      <div class="research-item-meta">November 2009 · Malware Analysis · Rootkits &amp; Bootkits</div>
+      <div class="research-item-title">Detecting Bootkits</div>
+      <div class="research-item-desc">Detection and analysis of bootkit malware. Co-authored with Dmitry Oleksiuk. Virus Bulletin.</div>
+    </a>
+
+    <a class="research-item" href="https://www.virusbulletin.com/virusbulletin/2009/08/everybody-lies-reaching-after-truth-while-searching-rootkits" target="_blank" rel="noopener">
+      <div class="research-item-meta">August 2009 · Incident Response · Rootkits</div>
+      <div class="research-item-title">Everybody Lies: Reaching After the Truth While Searching for Rootkits</div>
+      <div class="research-item-desc">Methods for retrieving reliable information from compromised systems. Co-authored with Dmitry Oleksiuk. Virus Bulletin.</div>
+    </a>
+
+    <a class="research-item" href="https://www.virusbulletin.com/virusbulletin/2009/05/case-study-tdss-rootkit" target="_blank" rel="noopener">
+      <div class="research-item-meta">May 2009 · Malware Analysis · Rootkits</div>
+      <div class="research-item-title">Case Study: the TDSS Rootkit</div>
+      <div class="research-item-desc">Detailed technical analysis of TDSS (Tidserv) rootkit, including persistence mechanisms and bypass techniques. Virus Bulletin.</div>
+    </a>
+
+    <a class="research-item" href="https://securelist.com/the-evolution-of-self-defense-technologies-in-malware/36156/" target="_blank" rel="noopener">
+      <div class="research-item-meta">Securelist · Malware Analysis</div>
+      <div class="research-item-title">The Evolution of Self-Defense Technologies in Malware</div>
+      <div class="research-item-desc">Evolution of malware self-defense and antivirus evasion techniques.</div>
+    </a>
+
+    <a class="research-item" href="https://securelist.com/rootkit-evolution/36222/" target="_blank" rel="noopener">
+      <div class="research-item-meta">Securelist · Malware Analysis</div>
+      <div class="research-item-title">Rootkit Evolution</div>
+      <div class="research-item-desc">Evolution of rootkit technology and capabilities as a distinct malware class.</div>
+    </a>
+
+
+  </div>
+
+  <footer>
+    <div class="footer-name">Alisa Esage Шевченко</div>
+    <div class="footer-copy">© 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
