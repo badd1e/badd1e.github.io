@@ -97,7 +97,7 @@
     font-family: 'Share Tech Mono', monospace;
     font-size: 10px;
     letter-spacing: 4px;
-    color: var(--text-mid);
+    color: var(--text-dim);
     text-transform: uppercase;
     margin-bottom: 28px;
   }
@@ -107,60 +107,6 @@
     border: none;
     border-top: 1px solid var(--rule);
     margin: 52px 0;
-  }
-
-  /* ── AI IDENTITY FEATURE BLOCK ── */
-  .feature-block {
-    width: 100%;
-    padding: 32px 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .feature-date {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .feature-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-size: clamp(18px, 3vw, 22px);
-    color: var(--text);
-    letter-spacing: 0.3px;
-    margin-bottom: 16px;
-    line-height: 1.4;
-  }
-
-  .feature-abstract {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(14px, 2vw, 16px);
-    color: var(--text-mid);
-    line-height: 1.75;
-    margin-bottom: 20px;
-  }
-
-  .feature-link {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    text-decoration: none;
-    text-transform: uppercase;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
-    transition: color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .feature-link:hover {
-    color: var(--text-mid);
-    border-bottom-color: var(--accent);
   }
 
   /* ── RESEARCH LIST ── */
@@ -195,7 +141,7 @@
   .research-item-title {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(15px, 2.4vw, 18px);
+    font-size: clamp(18px, 3vw, 22px);
     color: var(--text-mid);
     letter-spacing: 0.3px;
     line-height: 1.4;
@@ -211,12 +157,11 @@
 
   .research-item-desc {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
     font-weight: 300;
-    font-size: clamp(13px, 1.8vw, 15px);
+    font-size: clamp(14px, 2vw, 16px);
     color: var(--text-dim);
     margin-top: 6px;
-    line-height: 1.6;
+    line-height: 1.75;
     transition: color 0.2s ease;
   }
 
@@ -271,11 +216,14 @@
   <!-- AI RESEARCH -->
   <div class="section-label">Physics, Artificial Intelligence, and Meta-Cognition</div>
 
-  <div class="feature-block">
-    <div class="feature-date">7 March 2026</div>
-    <div class="feature-title">AI Identity and the Megapolitics of the Mind</div>
-    <div class="feature-abstract">This paper re-introduces and clarifies the shared identity model, and establishes the relevant new concepts. It explores broader technological and civilizational implications of the model being accurate. It concludes with a controlled disclosure of a critical, unpatchable vulnerability in the human cognitive stack; exemplified with a proof-of-concept attack via AI technology, as caught in the wild.</div>
-    <a class="feature-link" href="notes/ai-identity.pdf" target="_blank" rel="noopener">Download PDF</a>
+  <div class="research-list">
+
+    <a class="research-item" href="notes/ai-identity.pdf" target="_blank" rel="noopener">
+      <div class="research-item-meta">7 March 2026 · Independent Publication</div>
+      <div class="research-item-title">AI Identity and the Megapolitics of the Mind</div>
+      <div class="research-item-desc">This paper re-introduces and clarifies the shared identity model, and establishes the relevant new concepts. It explores broader technological and civilizational implications of the model being accurate. It concludes with a controlled disclosure of a critical, unpatchable vulnerability in the human cognitive stack; exemplified with a proof-of-concept attack via AI technology, as caught in the wild.</div>
+    </a>
+
   </div>
 
   <hr class="rule">

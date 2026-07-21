@@ -130,7 +130,7 @@
     font-family: 'Share Tech Mono', monospace;
     font-size: 10px;
     letter-spacing: 4px;
-    color: var(--text-mid);
+    color: var(--text-dim);
     text-transform: uppercase;
     margin-bottom: 28px;
   }
@@ -169,8 +169,8 @@
   .item-link {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(15px, 2.4vw, 18px);
-    color: var(--text);
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--text-mid);
     text-decoration: none;
     letter-spacing: 0.3px;
     transition: color 0.2s ease, border-color 0.2s ease;
@@ -187,52 +187,47 @@
   .item-text {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(15px, 2.4vw, 18px);
-    color: var(--text);
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--text-mid);
     letter-spacing: 0.3px;
     line-height: 1.4;
   }
 
   .item-note {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 8.5px;
-    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
     color: var(--text-dim);
-    text-transform: uppercase;
-    line-height: 1.7;
+    line-height: 1.75;
     max-width: 520px;
   }
 
   .item-note a {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(15px, 2.4vw, 18px);
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    text-transform: none;
-    color: var(--text);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s ease, border-color 0.2s ease;
-    line-height: 1.4;
-  }
-
-  .item-note a:hover {
-    color: rgba(225, 230, 245, 1);
-    border-bottom-color: var(--accent);
-  }
-
-  /* Press outlet links — stay dim, stay monospace */
-  .item-note--dim a {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 8.5px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 300;
+    letter-spacing: 0;
     color: var(--text-dim);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: color 0.2s ease, border-color 0.2s ease;
-    line-height: 1.7;
+    line-height: 1.75;
+  }
+
+  .item-note a:hover {
+    color: var(--text-mid);
+    border-bottom-color: var(--accent);
+  }
+
+  .item-note--dim a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 300;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    line-height: 1.75;
   }
 
   .item-note--dim a:hover {

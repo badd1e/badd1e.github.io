@@ -98,8 +98,8 @@
 
   .transmission-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 5px;
+    font-size: 10px;
+    letter-spacing: 4px;
     color: var(--text-dim);
     text-transform: uppercase;
     margin-bottom: 12px;
@@ -126,7 +126,7 @@
   /* ── SECTION LABELS ── */
   .section-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 4px;
     color: var(--text-dim);
     text-transform: uppercase;
@@ -206,10 +206,6 @@
     transition: all 0.25s ease;
   }
 
-  .brand-item:first-child {
-    border-top: 1px solid var(--rule);
-  }
-
   .brand-item:hover .brand-name {
     color: rgba(220, 225, 240, 1);
   }
@@ -221,20 +217,19 @@
   .brand-name {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(17px, 2.8vw, 21px);
-    color: var(--text);
-    letter-spacing: 0.5px;
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--text-mid);
+    letter-spacing: 0.3px;
     transition: color 0.25s ease;
   }
 
   .brand-desc {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2.5px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
     color: var(--text-dim);
     margin-top: 9px;
-    text-transform: uppercase;
-    line-height: 1.6;
+    line-height: 1.75;
     transition: color 0.25s ease;
     max-width: 380px;
     margin-left: auto;
@@ -258,16 +253,12 @@
     transition: color 0.25s ease;
   }
 
-  .event-item:first-child {
-    border-top: 1px solid var(--rule);
-  }
-
   .event-name {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(15px, 2.4vw, 18px);
+    font-size: clamp(18px, 3vw, 22px);
     color: var(--text-mid);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     transition: color 0.25s ease;
   }
 
@@ -276,12 +267,12 @@
   }
 
   .event-meta {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
     color: var(--text-dim);
     margin-top: 7px;
-    text-transform: uppercase;
+    line-height: 1.75;
   }
 
   /* ── RULE ── */
@@ -316,13 +307,12 @@
   }
 
   .socials a {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
     color: var(--text-dim);
     text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
     border-bottom: 1px solid transparent;
     padding-bottom: 1px;
   }
@@ -345,9 +335,9 @@
   .access-label {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(17px, 2.8vw, 21px);
-    letter-spacing: 0.5px;
-    color: var(--text);
+    font-size: clamp(18px, 3vw, 22px);
+    letter-spacing: 0.3px;
+    color: var(--text-mid);
     margin-bottom: 20px;
     text-align: center;
   }
@@ -366,10 +356,10 @@
     border: none;
     border-bottom: 1px solid var(--rule-bright);
     padding: 10px 0;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
     text-align: center;
     outline: none;
     transition: border-color 0.2s ease;
@@ -379,8 +369,9 @@
 
   .access-input::placeholder {
     color: var(--text-dim);
-    letter-spacing: 3px;
-    font-size: 9px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
   }
 
   .access-input:focus {
@@ -393,7 +384,7 @@
     border: 1px solid var(--rule-bright);
     padding: 10px 32px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 4px;
     color: var(--text-dim);
     text-transform: uppercase;
@@ -416,8 +407,8 @@
   .access-success, .access-error {
     display: none;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 3px;
+    font-size: 10px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     text-align: center;
   }
@@ -454,8 +445,8 @@
 
   .modal-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 5px;
+    font-size: 10px;
+    letter-spacing: 4px;
     color: var(--text-dim);
     text-transform: uppercase;
     margin-bottom: 28px;
@@ -469,8 +460,8 @@
 
   .modal-field-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 3px;
+    font-size: 10px;
+    letter-spacing: 4px;
     color: var(--text-dim);
     text-transform: uppercase;
     display: block;
@@ -483,10 +474,10 @@
     border: none;
     border-bottom: 1px solid var(--rule-bright);
     padding: 8px 0;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
     outline: none;
     transition: border-color 0.2s ease;
     -webkit-appearance: none;
@@ -495,8 +486,9 @@
 
   .modal-input::placeholder {
     color: var(--text-dim);
-    font-size: 9px;
-    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
   }
 
   .modal-input:focus {
@@ -511,12 +503,11 @@
 
   .modal-confirm-text {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
     font-weight: 300;
-    font-size: clamp(15px, 2.2vw, 17px);
-    color: var(--text-mid);
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.75;
     margin-bottom: 28px;
   }
 
