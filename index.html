@@ -168,13 +168,23 @@
 
   /* ── RULE ── */
   .rule-line {
+    width: 100%;
+    height: 56px;
+    position: relative;
+    margin: 52px 0;
+  }
+
+  .rule-line::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
     width: 1px;
     height: 56px;
     background: linear-gradient(to bottom,
       transparent,
       rgba(180, 195, 225, 0.18),
       transparent);
-    margin: 52px auto;
   }
 
   /* ── BRANDS ── */
@@ -276,13 +286,23 @@
 
   /* ── RULE ── */
   .rule-line-short {
+    width: 100%;
+    height: 48px;
+    position: relative;
+    margin: 48px 0;
+  }
+
+  .rule-line-short::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
     width: 1px;
     height: 48px;
     background: linear-gradient(to bottom,
       transparent,
       rgba(180, 195, 225, 0.12),
       transparent);
-    margin: 48px auto;
   }
 
   /* ── SOCIALS ── */
@@ -591,15 +611,17 @@
     </a>
   </div>
 
+  <div class="rule-line"></div>
+
   <!-- NAV -->
-  <nav style="margin-top:56px;">
+  <nav style="margin-top:0;">
     <a href="research.html">Research</a>
     <a href="timeline.html">Timeline</a>
   </nav>
 
   <div class="rule-line"></div>
 
-  <div class="section-label">My projects</div>
+  <div class="section-label">Projects</div>
 
   <!-- BRANDS -->
   <div class="brands">
@@ -616,7 +638,9 @@
 
   </div>
 
-  <div class="section-label" style="margin-top:72px;">Upcoming events</div>
+  <div class="rule-line"></div>
+
+  <div class="section-label">Events</div>
   <div class="events" style="margin-top:0;">
     <a class="event-item" href="https://zerodayengineering.com/training/chrome-full-chain/" target="_blank" rel="noopener">
       <div class="event-name">Chrome Full Chain Exploit Engineering</div>
