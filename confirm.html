@@ -30,7 +30,7 @@
 <div id="msg">...</div>
 <script>
   const token = new URLSearchParams(window.location.search).get('token');
-  fetch('https://script.google.com/macros/s/AKfycbw3qtOKKxtC4rt6AZ4ohQa0GuCXjKyTHyHCbjahjRnVmN-KBz7NtFpP0-4HrZQ_7rET/exec?token=' + encodeURIComponent(token))
+  fetch('https://script.google.com/macros/s/AKfycbys7jnM9zQ_B6qirWBiqc8baRN6T7o9mPuW0uclyuvmiQMxVW-4fCnemZ5-9n6zzwEX3A/exec?token=' + encodeURIComponent(token))
     .then(r => r.json())
     .then(data => { document.getElementById('msg').textContent = data.ok ? 'Confirmed.' : 'Error.'; })
     .catch(() => { document.getElementById('msg').textContent = 'Error.'; });
