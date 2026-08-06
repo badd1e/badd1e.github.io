@@ -751,6 +751,7 @@
       utm_source:   new URLSearchParams(location.search).get('utm_source')   || '',
       utm_medium:   new URLSearchParams(location.search).get('utm_medium')   || '',
       utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
+      source: location.hostname,
     });
 
     try {
