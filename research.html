@@ -177,6 +177,190 @@
     align-self: center;
   }
 
+  /* ── NEWSLETTER ── */
+  .newsletter-section {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+  }
+
+  .newsletter-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .access-denied {
+    width: min(360px, 88vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .access-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(18px, 3vw, 22px);
+    letter-spacing: 0.3px;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .access-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .access-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule-bright);
+    padding: 10px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .access-input::placeholder {
+    color: var(--text-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+  }
+
+  .access-input:focus { border-bottom-color: var(--accent); }
+
+  .access-submit {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px solid var(--rule-bright);
+    padding: 10px 32px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .access-submit:hover { border-color: var(--accent); color: var(--text-mid); }
+  .access-submit:active { color: var(--text); }
+
+  .access-success, .access-error {
+    display: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .access-success { color: var(--text-dim); }
+  .access-error   { color: rgba(210, 100, 100, 0.6); }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 8, 13, 0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    width: min(400px, 100%);
+    border: 1px solid var(--rule-bright);
+    padding: 40px 36px;
+    background: #07080d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .modal-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .modal-field { width: 100%; margin-bottom: 20px; }
+
+  .modal-field-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .modal-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule-bright);
+    padding: 8px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
+    outline: none;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .modal-input::placeholder {
+    color: var(--text-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+  }
+
+  .modal-input:focus { border-bottom-color: rgba(180, 195, 225, 0.4); }
+
+  .modal-actions { margin-top: 24px; display: flex; gap: 16px; }
+
+  .modal-confirm-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
   footer {
     margin-top: 80px;
     align-self: center;
@@ -418,6 +602,55 @@
 
 
   </div>
+
+  <div class="newsletter-section">
+    <div class="newsletter-label">Newsletter</div>
+    <div class="access-denied">
+      <div class="access-label">Access Denied</div>
+      <div class="access-form" id="access-form">
+        <input class="access-input" type="email" id="access-email" placeholder="your@email.com"
+          autocomplete="email" spellcheck="false" autocapitalize="off"
+          onkeydown="if(event.key==='Enter') handleSubmit()" />
+        <button class="access-submit" id="access-btn" onclick="handleSubmit()">Request</button>
+      </div>
+      <div class="access-success" id="success-msg">Success.</div>
+      <div class="access-error" id="error-msg">Error. Try again later.</div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: metadata -->
+  <div class="modal-overlay" id="modal-meta">
+    <div class="modal-box">
+      <div class="modal-label">Access Request</div>
+      <div class="modal-field">
+        <label class="modal-field-label">Full Name</label>
+        <input class="modal-input" id="meta-name" type="text" placeholder="" autocomplete="name" spellcheck="false" />
+      </div>
+      <div class="modal-field">
+        <label class="modal-field-label">What brings you here?</label>
+        <input class="modal-input" id="meta-signal" type="text" placeholder="e.g. a specific publication or news piece" spellcheck="false" />
+      </div>
+      <div class="modal-field">
+        <label class="modal-field-label">Primary Interest</label>
+        <input class="modal-input" id="meta-interest" type="text" placeholder="e.g. exploit research, AI, productivity" spellcheck="false" />
+      </div>
+      <div class="modal-actions">
+        <button class="access-submit" id="meta-cancel" onclick="closeModal()">Cancel</button>
+        <button class="access-submit" id="meta-submit" onclick="submitMeta()">Proceed</button>
+      </div>
+      <div class="access-error" id="modal-error" style="margin-top:16px">Error. Try again later.</div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: confirmation -->
+  <div class="modal-overlay" id="modal-confirm">
+    <div class="modal-box">
+      <div class="modal-confirm-text">One more step — check your email to confirm your subscription.</div>
+      <button class="access-submit" onclick="closeConfirm()">OK</button>
+    </div>
+  </div>
+
+  <script src="js/newsletter-submit.js?v=20260808"></script>
 
   <footer>
     <div class="footer-name">Alisa Esage Шевченко</div>
