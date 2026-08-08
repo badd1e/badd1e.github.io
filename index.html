@@ -168,23 +168,23 @@
 
   /* ── RULE ── */
   .rule-line {
-    width: 100%;
+    align-self: stretch;
     height: 56px;
-    position: relative;
     margin: 52px 0;
+    display: flex;
+    justify-content: center;
   }
 
   .rule-line::before {
     content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
+    display: block;
     width: 1px;
     height: 56px;
     background: linear-gradient(to bottom,
       transparent,
-      rgba(180, 195, 225, 0.18),
+      rgba(180, 195, 225, 0.28),
       transparent);
+    flex-shrink: 0;
   }
 
   /* ── BRANDS ── */
@@ -277,23 +277,23 @@
 
   /* ── RULE ── */
   .rule-line-short {
-    width: 100%;
+    align-self: stretch;
     height: 48px;
-    position: relative;
     margin: 48px 0;
+    display: flex;
+    justify-content: center;
   }
 
   .rule-line-short::before {
     content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
+    display: block;
     width: 1px;
     height: 48px;
     background: linear-gradient(to bottom,
       transparent,
       rgba(180, 195, 225, 0.12),
       transparent);
+    flex-shrink: 0;
   }
 
   /* ── SOCIALS ── */
@@ -537,6 +537,21 @@
     text-transform: uppercase;
   }
 
+  /* ── BIO ── */
+  .bio {
+    margin-top: 12px;
+    text-align: center;
+    padding: 0 32px;
+  }
+
+  .bio p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-dim);
+    line-height: 1.75;
+  }
+
   /* ── MOBILE ── */
   @media (max-width: 600px) {
     nav {
@@ -544,7 +559,7 @@
     }
 
     .rule-line {
-      margin: 40px auto;
+      margin: 40px 0;
     }
 
     .brand-item {
@@ -591,9 +606,17 @@
     />
   </div>
 
+  <!-- BIO -->
+  <div class="brand-name" style="margin-top:40px;">Alisa Esage</div>
+  <div class="bio">
+    <p>Independent hacker.<br>I work from first principles at the frontiers of exploit engineering and solo capability.</p>
+  </div>
+
+  <div class="rule-line"></div>
+
   <!-- CURRENT TRANSMISSION -->
-  <div class="transmission">
-    <div class="transmission-label">Recent</div>
+  <div class="transmission" style="margin-top:0;">
+    <div class="transmission-label">Recent Publications</div>
     <a href="https://re.alisa.sh/notes/ai-identity.pdf" target="_blank" rel="noopener">
       AI Identity and the Megapolitics of the Mind
     </a>
@@ -612,19 +635,19 @@
 
   <div class="rule-line"></div>
 
-  <div class="section-label">Projects</div>
+  <div class="section-label">My Businesses</div>
 
   <!-- BRANDS -->
   <div class="brands">
 
     <a href="#" class="brand-item">
-      <div class="brand-name">Reality Model Mastermind</div>
-      <div class="brand-desc">Private programs for post-human operators<br>Subscribe to get notified</div>
+      <div class="brand-name">Cognitive Technologies</div>
+      <div class="brand-desc">Foundational AI research and identity architecture<br>for post-human operators</div>
     </a>
 
     <a href="https://zerodayengineering.com" class="brand-item" target="_blank" rel="noopener">
       <div class="brand-name">Zero Day Engineering</div>
-      <div class="brand-desc">Exploit design and theoretical models<br> for defense, intelligence, and frontier organizations</div>
+      <div class="brand-desc">Exploit design and abstract modeling<br>for defense, intelligence, and frontier organizations</div>
     </a>
 
   </div>
