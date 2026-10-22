@@ -55,7 +55,7 @@ div.index {
     white-space: pre-line;
     margin-left: auto;
     margin-right: auto;
-    width: 300px;
+    max-width: 43em;
     text-align: center;
 }
 .metanote {
